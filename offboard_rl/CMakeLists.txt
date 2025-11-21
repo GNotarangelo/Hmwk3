@@ -42,6 +42,13 @@ install(TARGETS
   ContinuousTrajectory
   DESTINATION lib/${PROJECT_NAME})
 
+add_executable(waypoint_controller src/OffboardWaypointController.cpp)
+ament_target_dependencies(waypoint_controller rclcpp px4_msgs Eigen3)
+target_link_libraries(waypoint_controller Eigen3::Eigen)
+install(TARGETS
+    waypoint_controller
+    DESTINATION lib/${PROJECT_NAME})
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
